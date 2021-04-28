@@ -14,7 +14,7 @@ extension PaddingModifers on Widget {
     );
   }
 
-  Widget paddingOnly({double? left, double? right, double? top, double? bottom}) {
+  Widget paddingOnly({double? left = 0, double? right = 0, double? top = 0, double? bottom = 0}) {
     return Padding(
       padding: EdgeInsets.only(
         left: left!,
