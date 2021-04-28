@@ -14,13 +14,13 @@ extension PaddingModifers on Widget {
     );
   }
 
-  Widget paddingOnly({double? left = 0, double? right = 0, double? top = 0, double? bottom = 0}) {
+  Widget paddingOnly({double? left, double? right, double? top, double? bottom}) {
     return Padding(
       padding: EdgeInsets.only(
-        left: left!,
-        right: right!,
-        top: top!,
-        bottom: bottom!,
+        left: left ?? 0,
+        right: right ?? 0,
+        top: top ?? 0,
+        bottom: bottom ?? 0,
       ),
       child: this,
     );
