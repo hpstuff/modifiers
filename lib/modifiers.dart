@@ -14,13 +14,13 @@ extension PaddingModifers on Widget {
     );
   }
 
-  Widget paddingOnly({double left, double right, double top, double bottom}) {
+  Widget paddingOnly({double? left, double? right, double? top, double? bottom}) {
     return Padding(
       padding: EdgeInsets.only(
-        left: left,
-        right: right,
-        top: top,
-        bottom: bottom,
+        left: left!,
+        right: right!,
+        top: top!,
+        bottom: bottom!,
       ),
       child: this,
     );
@@ -65,9 +65,9 @@ extension ColorModifers on Widget {
 
 extension LayoutModifers on Widget {
   Widget frame({
-    double width,
-    double height,
-    Alignment alignment: Alignment.center,
+    double? width,
+    double? height,
+    Alignment? alignment,
   }) {
     Widget content = this;
     if (alignment != null) {
@@ -84,13 +84,13 @@ extension LayoutModifers on Widget {
   }
 
   Widget frameConstrained({
-    double minWidth,
-    double idealWidth,
-    double maxWidth,
-    double minHeight,
-    double idealHeight,
-    double maxHeight,
-    Alignment alignment,
+    required double minWidth,
+    double? idealWidth,
+    required double maxWidth,
+    required double minHeight,
+    double? idealHeight,
+    required double maxHeight,
+    Alignment? alignment,
   }) {
     Widget content = this;
     if (alignment != null) {
@@ -186,7 +186,7 @@ extension RenderingModifiers on Widget {
   Widget shadow(
     Color color,
     double radius, {
-    double blur,
+    required double blur,
     double x = 0.0,
     double y = 0.0,
   }) {
@@ -208,10 +208,10 @@ extension RenderingModifiers on Widget {
 
 extension TextModifiers on Text {
   Widget font({
-    double size,
-    String family,
-    FontWeight weight,
-    FontStyle style,
+    double? size,
+    String? family,
+    FontWeight? weight,
+    FontStyle? style,
   }) {
     return DefaultTextStyle(
       style: TextStyle(
@@ -236,7 +236,7 @@ extension TextModifiers on Text {
   Widget lineLimit(int limit) {
     return DefaultTextStyle(
       maxLines: limit,
-      style: this.style,
+      style: this.style!,
       child: this,
     );
   }
@@ -244,7 +244,7 @@ extension TextModifiers on Text {
   Widget multilineTextAlignment(TextAlign textAlign) {
     return DefaultTextStyle(
       textAlign: textAlign,
-      style: this.style,
+      style: this.style!,
       child: this,
     );
   }
@@ -252,7 +252,7 @@ extension TextModifiers on Text {
   Widget truncationMode(TextOverflow overflow) {
     return DefaultTextStyle(
       overflow: overflow,
-      style: this.style,
+      style: this.style!,
       child: this,
     );
   }
@@ -274,7 +274,7 @@ extension TextModifiers on Text {
   Widget shadow(
     Color color,
     double radius, {
-    double blur,
+    required double blur,
     double x = 0.0,
     double y = 0.0,
   }) {
@@ -296,21 +296,21 @@ extension TextModifiers on Text {
 }
 
 extension NavigationModifiers on Widget {
-  Widget navigationBarTitle(Widget title, {NavigationBarStyle style}) {
+  Widget navigationBarTitle(Widget title, {NavigationBarStyle? style}) {
     return Builder(
       builder: (BuildContext context) {
-        NavigationView.of(context).navigationBarTitle = title;
-        NavigationView.of(context).navigationBarStyle = style;
+        NavigationView.of(context)!.navigationBarTitle = title;
+        NavigationView.of(context)!.navigationBarStyle = style;
         return this;
       },
     );
   }
 
-  Widget navigationBarItems({Widget leading, List<Widget> trailing}) {
+  Widget navigationBarItems({Widget? leading, List<Widget>? trailing}) {
     return Builder(
       builder: (BuildContext context) {
-        NavigationView.of(context).leading = leading;
-        NavigationView.of(context).trailing = trailing;
+        NavigationView.of(context)!.leading = leading;
+        NavigationView.of(context)!.trailing = trailing;
         return this;
       },
     );
